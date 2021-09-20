@@ -1,7 +1,7 @@
 package com.keep_updated.covidhelper.domain.repository
 
-import com.keep_updated.covidhelper.data.Article
-import com.keep_updated.covidhelper.data.NewsAPIResponse
+import com.keep_updated.covidhelper.data.models.Article
+import com.keep_updated.covidhelper.data.models.NewsAPIResponse
 import com.keep_updated.covidhelper.data.util.Resource
 import kotlinx.coroutines.flow.Flow
 

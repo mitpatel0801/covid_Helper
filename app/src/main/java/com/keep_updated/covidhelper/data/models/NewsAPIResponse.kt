@@ -1,4 +1,4 @@
-package com.keep_updated.covidhelper.data
+package com.keep_updated.covidhelper.data.models
 
 
 import com.google.gson.annotations.SerializedName
