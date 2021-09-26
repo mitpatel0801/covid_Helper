@@ -1,24 +1,26 @@
 package com.keep_updated.covidhelper.presentation.viewModel
 
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.keep_updated.covidhelper.data.models.NewsAPIResponse
 import com.keep_updated.covidhelper.data.util.Resource
 import com.keep_updated.covidhelper.domain.usecase.GetNewsHeadlineUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-
-class NewsViewModel(
+@HiltViewModel
+class NewsViewModel @Inject constructor(
     private val getNewsHeadLineUseCase: GetNewsHeadlineUseCase,
-    val app: Application
-) : AndroidViewModel(app) {
+    @ApplicationContext private val context: Context
+) : ViewModel() {
     private val _newsHeadLines: MutableLiveData<Resource<NewsAPIResponse>> = MutableLiveData()
     val newsHeadLines: LiveData<Resource<NewsAPIResponse>> = _newsHeadLines
 
@@ -26,7 +28,7 @@ class NewsViewModel(
     fun getNewsHeadLines() = viewModelScope.launch {
         _newsHeadLines.postValue(Resource.Loading())
         try {
-            if (isNetworkAvailable(app)) {
+            if (isNetworkAvailable(context)) {
 
                 val apiResult = getNewsHeadLineUseCase.execute()
                 _newsHeadLines.postValue(apiResult)
@@ -69,5 +71,6 @@ class NewsViewModel(
         return false
 
     }
+
 
 }

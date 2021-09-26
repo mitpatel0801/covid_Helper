@@ -1,6 +1,6 @@
 package com.keep_updated.covidhelper.presentation.di
 
-import com.google.gson.Gson
+import com.keep_updated.covidhelper.BuildConfig
 import com.keep_updated.covidhelper.data.api.NewsAPIService
 import dagger.Module
 import dagger.Provides
@@ -20,7 +20,7 @@ object NewsNetModule {
     @Provides
     fun provideRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl("https://open-api.xyz/placeholder/")
+            .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
     }
 
