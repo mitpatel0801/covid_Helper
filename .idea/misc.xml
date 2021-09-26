@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/drawable/bottom_navigation_selector.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/drawable/botton_navigation_item_icon.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/drawable/ic_download_news_24.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/drawable/ic_news_24.xml" value="0.3828125" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/layout/fragment_remote_news.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/layout/fragment_saved_newss.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidWorkSpace/Coding NInja Exercises1/covidHelper/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/remote_news_item"
+        android:icon="@drawable/ic_news_24"
+        android:title="News" />
+    <item
+        android:id="@+id/saved_news_item"
+        android:icon="@drawable/ic_download_news_24"
+        android:title="SavedNews" />
+
+</menu>

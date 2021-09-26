@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">covid Helper</string>
+    <string name="app_name">Covid-19 Helper</string>
+    <string name="hello_blank_fragment">Hello blank fragment1</string>
+    <string name="hello_blank_fragment2">Hello blank fragment2</string>
 </resources>

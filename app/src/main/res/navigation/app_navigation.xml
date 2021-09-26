@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/remote_news_item">
+    <fragment
+        android:id="@+id/remote_news_item"
+        android:name="com.keep_updated.covidhelper.presentation.fragments.RemoteNewsFragment"
+        android:label="fragment_remote_news"
+        tools:layout="@layout/fragment_remote_news">
+        <action
+            android:id="@+id/action_remoteNewsFragment_to_detailedNewsFragment"
+            app:destination="@id/detailedNewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailedNewsFragment"
+        android:name="com.keep_updated.covidhelper.presentation.fragments.DetailedNewsFragment"
+        android:label="fragment_detailed_news"
+        tools:layout="@layout/fragment_detailed_news" />
+    <fragment
+        android:id="@id/saved_news_item"
+        android:name="com.keep_updated.covidhelper.presentation.fragments.SavedNewssFragment"
+        android:label="fragment_saved_newss"
+        tools:layout="@layout/fragment_saved_newss">
+        <action
+            android:id="@+id/action_savedNewssFragment_to_detailedNewsFragment"
+            app:destination="@id/detailedNewsFragment" />
+    </fragment>
+</navigation>
