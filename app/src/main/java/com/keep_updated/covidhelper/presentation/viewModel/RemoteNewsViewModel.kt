@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewModel @Inject constructor(
+class RemoteNewsViewModel @Inject constructor(
     private val getNewsHeadLineUseCase: GetNewsHeadlineUseCase,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
@@ -25,12 +25,12 @@ class NewsViewModel @Inject constructor(
     val newsHeadLines: LiveData<Resource<NewsAPIResponse>> = _newsHeadLines
 
 
-    fun getNewsHeadLines() = viewModelScope.launch {
+    fun getNewsHeadLines(page: Int) = viewModelScope.launch {
         _newsHeadLines.postValue(Resource.Loading())
         try {
             if (isNetworkAvailable(context)) {
 
-                val apiResult = getNewsHeadLineUseCase.execute()
+                val apiResult = getNewsHeadLineUseCase.execute(page)
                 _newsHeadLines.postValue(apiResult)
             } else {
                 _newsHeadLines.postValue(Resource.Error("Internet is not Available"))

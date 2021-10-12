@@ -10,4 +10,5 @@
     <color name="main_color">#CE0000</color>
     <color name="item_selected_color">#490808</color>
     <color name="statusbar_color">#A51212</color>
+    <color name="gray">#E4E0E0</color>
 </resources>

@@ -6,7 +6,7 @@ import com.keep_updated.covidhelper.data.repository.dataSource.NewsRemoteDataSou
 import retrofit2.Response
 
 class NewsRemoteDataSourceImpl(private val newsAPIService: NewsAPIService) : NewsRemoteDataSource {
-    override suspend fun getTopHeadLine(): Response<NewsAPIResponse> {
-        return newsAPIService.getTopHeadlines()
+    override suspend fun getTopHeadLine(page: Int): Response<NewsAPIResponse> {
+        return newsAPIService.getTopHeadlines(page)
     }
 }

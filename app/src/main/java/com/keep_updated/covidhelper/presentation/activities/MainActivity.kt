@@ -1,6 +1,5 @@
 package com.keep_updated.covidhelper.presentation.activities
 
-import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -33,13 +32,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            val window = this.window
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.statusBarColor = ContextCompat.getColor(this, R.color.statusbar_color)
-        } else {
-
-        }
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.statusbar_color)
     }
 
     private fun setUpActionBar() {

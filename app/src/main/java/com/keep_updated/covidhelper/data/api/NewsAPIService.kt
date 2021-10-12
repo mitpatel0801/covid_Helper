@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface NewsAPIService {
 
-    @GET("v2/top-headlines?q=covid")
+    @GET("v2/top-headlines?q=covid&language=en")
     suspend fun getTopHeadlines(
         @Query("page") page: Int = 1,
         @Query("apiKey") apiKey: String = BuildConfig.API_KEY,
