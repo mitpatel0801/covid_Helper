@@ -10,14 +10,18 @@
         android:label="fragment_remote_news"
         tools:layout="@layout/fragment_remote_news">
         <action
-            android:id="@+id/action_remoteNewsFragment_to_detailedNewsFragment"
+            android:id="@+id/action_remote_news_item_to_detailedNewsFragment"
             app:destination="@id/detailedNewsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailedNewsFragment"
         android:name="com.keep_updated.covidhelper.presentation.fragments.DetailedNewsFragment"
         android:label="fragment_detailed_news"
-        tools:layout="@layout/fragment_detailed_news" />
+        tools:layout="@layout/fragment_detailed_news">
+        <argument
+            android:name="article"
+            app:argType="com.keep_updated.covidhelper.data.models.Article" />
+    </fragment>
     <fragment
         android:id="@id/saved_news_item"
         android:name="com.keep_updated.covidhelper.presentation.fragments.SavedNewssFragment"

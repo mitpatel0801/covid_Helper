@@ -14,4 +14,15 @@ interface NewsAPIService {
         @Query("apiKey") apiKey: String = BuildConfig.API_KEY,
     ): Response<NewsAPIResponse>
 
+    @GET("v2/top-headlines")
+    suspend fun getSearchedTopHeadlines(
+        @Query("q")
+        searchQuery: String,
+        @Query("page")
+        page: Int,
+        @Query("apiKey")
+        apiKey: String = BuildConfig.API_KEY
+    ): Response<NewsAPIResponse>
+
+
 }

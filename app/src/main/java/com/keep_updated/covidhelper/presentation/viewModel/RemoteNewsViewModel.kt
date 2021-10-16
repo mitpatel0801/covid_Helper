@@ -11,6 +11,7 @@ import androidx.lifecycle.viewModelScope
 import com.keep_updated.covidhelper.data.models.NewsAPIResponse
 import com.keep_updated.covidhelper.data.util.Resource
 import com.keep_updated.covidhelper.domain.usecase.GetNewsHeadlineUseCase
+import com.keep_updated.covidhelper.domain.usecase.GetSearchedNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.launch
@@ -19,6 +20,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RemoteNewsViewModel @Inject constructor(
     private val getNewsHeadLineUseCase: GetNewsHeadlineUseCase,
+    private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
     private val _newsHeadLines: MutableLiveData<Resource<NewsAPIResponse>> = MutableLiveData()
@@ -39,6 +41,25 @@ class RemoteNewsViewModel @Inject constructor(
             _newsHeadLines.postValue(Resource.Error(e.message.toString()))
         }
 
+    }
+
+    private val _searchedResult: MutableLiveData<Resource<NewsAPIResponse>> = MutableLiveData()
+    val searchedResult: LiveData<Resource<NewsAPIResponse>> = _searchedResult
+
+    fun getSearchedNews(page: Int, query: String) = viewModelScope.launch {
+        _searchedResult.postValue(Resource.Loading())
+        try {
+            if (isNetworkAvailable(context)) {
+                val apiResult = getSearchedNewsUseCase.execute(page, query)
+                apiResult.data?.let {
+                    _searchedResult.postValue(apiResult)
+                }
+            } else {
+                _searchedResult.postValue(Resource.Error("Network is not Available"))
+            }
+        } catch (e: Exception) {
+            _searchedResult.postValue(Resource.Error(e.message.toString()))
+        }
     }
 
 

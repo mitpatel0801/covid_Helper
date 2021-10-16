@@ -1,4 +1,4 @@
-package com.keep_updated.covidhelper.presentation.di
+package com.keep_updated.covidhelper.presentation.di.news
 
 import com.keep_updated.covidhelper.BuildConfig
 import com.keep_updated.covidhelper.data.api.NewsAPIService

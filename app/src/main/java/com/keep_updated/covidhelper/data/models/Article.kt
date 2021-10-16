@@ -1,12 +1,14 @@
 package com.keep_updated.covidhelper.data.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Article(
     @SerializedName("author")
-    val author: Any,
+    val author: String,
     @SerializedName("content")
     val content: String,
     @SerializedName("description")
@@ -21,4 +23,4 @@ data class Article(
     val url: String,
     @SerializedName("urlToImage")
     val urlToImage: String
-) : Serializable
+) : Parcelable

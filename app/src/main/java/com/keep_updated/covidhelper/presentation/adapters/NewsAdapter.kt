@@ -1,5 +1,6 @@
 package com.keep_updated.covidhelper.presentation.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ class NewsAdapter(private val onClickListener: (Article) -> Unit) :
 
     private val list: ArrayList<Article> = arrayListOf()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun addAllArticle(newList: List<Article>) {
         list.addAll(newList)
         notifyDataSetChanged()
@@ -29,7 +31,7 @@ class NewsAdapter(private val onClickListener: (Article) -> Unit) :
             newsListItemBinding.tvTitle.text = article.title
             newsListItemBinding.tvDescription.text = article.description
             newsListItemBinding.tvPublishedAt.text = article.publishedAt
-            newsListItemBinding.tvSource.text = article.source.name
+            //  newsListItemBinding.tvSource.text = article.source.name
 
             newsListItemBinding.root.setOnClickListener {
                 onClickListener(article)

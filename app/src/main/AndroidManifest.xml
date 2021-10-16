@@ -16,7 +16,7 @@
         android:theme="@style/Theme.CovidHelper">
         <activity
             android:name=".presentation.activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
