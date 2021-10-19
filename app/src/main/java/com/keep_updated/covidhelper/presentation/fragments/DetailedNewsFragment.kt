@@ -8,16 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.keep_updated.covidhelper.data.models.Article
 import com.keep_updated.covidhelper.databinding.FragmentDetailedNewsBinding
+import com.keep_updated.covidhelper.presentation.viewModel.DetailNewsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailedNewsFragment : Fragment() {
 
     private lateinit var fragmentDetailedNewsBinding: FragmentDetailedNewsBinding
     private lateinit var article: Article
+    private val detailNewsViewModel: DetailNewsViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +29,7 @@ class DetailedNewsFragment : Fragment() {
     ): View {
         fragmentDetailedNewsBinding = FragmentDetailedNewsBinding.inflate(inflater)
         return fragmentDetailedNewsBinding.root
+
     }
 
 
@@ -35,8 +40,15 @@ class DetailedNewsFragment : Fragment() {
 
         fragmentDetailedNewsBinding.vwNews.webViewClient = WebViewClient()
 
-        if (article.url.isNotEmpty()) {
-            fragmentDetailedNewsBinding.vwNews.loadUrl(article.url)
+        article.url?.let {
+            if (it.isNotEmpty()) {
+                fragmentDetailedNewsBinding.vwNews.loadUrl(it)
+            }
+        }
+
+        fragmentDetailedNewsBinding.fbSaveNews.setOnClickListener {
+            Snackbar.make(view, "News has been saved", Snackbar.LENGTH_LONG).show()
+            detailNewsViewModel.saveNews(article)
         }
 
     }
@@ -71,4 +83,5 @@ class DetailedNewsFragment : Fragment() {
             hideProgressbar()
         }
     }
+
 }

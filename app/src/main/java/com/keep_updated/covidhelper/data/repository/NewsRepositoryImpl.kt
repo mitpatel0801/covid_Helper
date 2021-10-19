@@ -2,13 +2,17 @@ package com.keep_updated.covidhelper.data.repository
 
 import com.keep_updated.covidhelper.data.models.Article
 import com.keep_updated.covidhelper.data.models.NewsAPIResponse
+import com.keep_updated.covidhelper.data.repository.dataSource.NewsLocalDataSource
 import com.keep_updated.covidhelper.data.repository.dataSource.NewsRemoteDataSource
 import com.keep_updated.covidhelper.data.util.Resource
 import com.keep_updated.covidhelper.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
-class NewsRepositoryImpl(private val newsRemoteDataSource: NewsRemoteDataSource) : NewsRepository {
+class NewsRepositoryImpl(
+    private val newsRemoteDataSource: NewsRemoteDataSource,
+    private val localDataSource: NewsLocalDataSource
+) : NewsRepository {
 
     override suspend fun getNewsHeadlines(page: Int): Resource<NewsAPIResponse> {
         return responseToResource(newsRemoteDataSource.getTopHeadLine(page))
@@ -22,7 +26,7 @@ class NewsRepositoryImpl(private val newsRemoteDataSource: NewsRemoteDataSource)
     }
 
     override suspend fun saveNews(article: Article) {
-        TODO("Not yet implemented")
+        localDataSource.saveNews(article)
     }
 
     override suspend fun deleteNews(article: Article) {

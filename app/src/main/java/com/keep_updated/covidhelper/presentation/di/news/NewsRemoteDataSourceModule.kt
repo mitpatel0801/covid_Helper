@@ -16,7 +16,7 @@ object NewsRemoteDataSourceModule {
 
     @Singleton
     @Provides
-    fun provideNewsDataSource(newsAPIService: NewsAPIService): NewsRemoteDataSource {
+    fun provideRemoteNewsDataSource(newsAPIService: NewsAPIService): NewsRemoteDataSource {
         return NewsRemoteDataSourceImpl(newsAPIService)
     }
 }
