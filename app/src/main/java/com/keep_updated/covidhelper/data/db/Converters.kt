@@ -7,11 +7,11 @@ class Converters {
 
     @TypeConverter
     fun fromSource(source: Source): String {
-        return source.name
+        return source.id + "===" + source.name
     }
 
     @TypeConverter
     fun toSource(source: String): Source {
-        return Source(source, source)
+        return Source(source.split("===")[0], source.split("===")[1])
     }
 }
